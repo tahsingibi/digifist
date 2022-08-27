@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digifist Task</title>
+    <link href="./src/css/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div class="image">
+          <img src="./src/img/bg.png" alt="Clothes" />
+        </div>
+        <div class="main">
+          <div class="text">
+            <h1>Everyday items, we have something to suit every occasion.</h1>
+            <p>
+              At suspendisse augue lectus arcu, accumsan ut sit posuere vitae
+              sit tincidunt semper eu proin leo gravida cursus.
+            </p>
+          </div>
+
+          <div class="product">
+            <h4><span>Shop all everyday items</span></h4>
+            <a class="slideButton" href="#lastCard">
+                <svg width="8" height="14"viewBox="0 0 8 14"fill="none"xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.646447 0.646447C0.841709 0.451184 1.15829 0.451184 1.35355 0.646447L7.35355 6.64645C7.54882 6.84171 7.54882 7.15829 7.35355 7.35355L1.35355 13.3536C1.15829 13.5488 0.841709 13.5488 0.646447 13.3536C0.451184 13.1583 0.451184 12.8417 0.646447 12.6464L6.29289 7L0.646447 1.35355C0.451184 1.15829 0.451184 0.841709 0.646447 0.646447Z" fill="black"/>
+                </svg>
+              </a>
+            <ul class="productSlide">
+              <li class="card">
+                <figure class="cardImg">
+                  <img src="./src/img/green.png" />
+                </figure>
+                <div class="cardDescription">
+                  <h5>Organic Skinny High Waist Jeans</h5>
+                  <div class="cardInfo">
+                    <p class="price">€33.95</p>
+                    <p class="colors">
+                      <span class="colorsBlue selected"></span>
+                      <span class="colorsOrange"></span>
+                      <span class="colorsPurple"></span>
+                      <span class="colorsYellow"></span>
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li class="card">
+                <figure class="cardImg">
+                  <img src="./src/img/yellow.png" />
+                </figure>
+                <div class="cardDescription">
+                  <h5>Organic Skinny High Waist Jeans</h5>
+                  <div class="cardInfo">
+                    <p class="price">€33.95</p>
+                    <p class="colors">
+                      <span class="colorsBlue selected"></span>
+                      <span class="colorsOrange"></span>
+                      <span class="colorsPurple"></span>
+                      <span class="colorsYellow"></span>
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li class="card" id="lastt">
+                <figure class="cardImg">
+                  <img src="./src/img/blue.png" />
+                </figure>
+                <div class="cardDescription" id="lastCard">
+                  <h5>Organic Skinny High Waist Jeans</h5>
+                  <div class="cardInfo">
+                    <p class="price">€33.95</p>
+                    <p class="colors">
+                      <span class="colorsBlue selected"></span>
+                      <span class="colorsOrange"></span>
+                      <span class="colorsPurple"></span>
+                      <span class="colorsYellow"></span>
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+        let isDown = false;
+      let startX;
+      let scrollLeft;
+      const slider = document.querySelector(".productSlide");
+
+      const end = () => {
+        isDown = false;
+        slider.classList.remove("active");
+      };
+
+      const start = (e) => {
+        isDown = true;
+        slider.classList.add("active");
+        startX = e.pageX || e.touches[0].pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+      };
+
+      const move = (e) => {
+        if (!isDown) return;
+
+        e.preventDefault();
+        const x = e.pageX || e.touches[0].pageX - slider.offsetLeft;
+        const dist = x - startX;
+        slider.scrollLeft = scrollLeft - dist;
+      };
+
+      (() => {
+        slider.addEventListener("mousedown", start);
+        slider.addEventListener("touchstart", start);
+
+        slider.addEventListener("mousemove", move);
+        slider.addEventListener("touchmove", move);
+
+        slider.addEventListener("mouseleave", end);
+        slider.addEventListener("mouseup", end);
+        slider.addEventListener("touchend", end);
+      })();
+    </script>
+  </body>
+</html>

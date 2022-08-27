@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities{
+  @font-face {
+    font-family: "Avenir";
+    src: url(src/fonts/Avenir.ttc) format("truetype");
+  }
+  @font-face {
+    font-family: "ITCAvantBk";
+    src: url(/src/fonts/ITCAvantGardePro-Bk.otf) format("opentype");
+  }
+  @font-face {
+    font-family: "ITCAvantBold";
+    src: url(/src/fonts/ITCAvantGardePro-Bold.otf) format("opentype");
+  }
+  @font-face {
+    font-family: "ITCAvantDemi";
+    src: url(/src/fonts/ITCAvantGardePro-Demi.otf) format("opentype");
+  }
+  @font-face {
+    font-family: "ITCAvantMd";
+    src: url(/src/fonts/ITCAvantGardePro-Md.otf) format("opentype");
+  }  
+}
+
+body {
+  @apply font-['Avenir'] antialiased scroll-smooth;
+}
+
+.container {
+  @apply max-w-[1440px] w-full mx-auto sm:mt-20 shadow-xl;
+}
+.content {
+  @apply w-full flex flex-col sm:flex-row;
+}
+.image {
+  @apply relative;
+}
+.main {
+  @apply absolute top-[248px] sm:static;
+}
+.image,
+.main {
+  @apply w-full sm:max-w-[720px] sm:w-1/2 sm:block;
+}
+.main {
+  @apply sm:pt-24;
+}
+.text {
+  @apply px-6 sm:px-[120px];
+}
+.text h1 {
+  @apply font-bold text-xl text-white sm:text-black sm:text-[31.25px] font-['ITCAvantBold'] leading-[130%] mb-3;
+}
+.text p {
+  @apply leading-[130%] sm:leading-[160%] text-base hidden sm:block sm:text-[#666666];
+}
+
+.product {
+  @apply mt-4 sm:mt-8 sm:relative;
+}
+.slideButton {
+  @apply absolute right-10 z-10 bottom-1/2 top-1/2 w-10 h-10 sm:flex items-center justify-center border border-black/10 hidden;
+}
+.slideButton svg {
+  @apply w-[7px] h-[13px];
+}
+.product h4 {
+  @apply pl-6 sm:pl-[120px];
+}
+.product h4 span {
+  @apply text-[12.8px] border-b pb-[5px] font-black text-white sm:text-black border-white sm:border-black capitalize;
+}
+
+.productSlide {
+  @apply w-full overflow-hidden whitespace-nowrap mt-8 sm:mt-[68px] select-none;
+}
+.productSlide.active {
+  @apply cursor-grab;
+}
+
+.card {
+  @apply inline-flex flex-col text-[12.8px] w-full mr-3 sm:mr-8 select-none max-w-[148px] sm:max-w-[230px] first-of-type:ml-6 first-of-type:sm:ml-[120px];
+}
+.cardDescription h5 {
+  @apply font-normal whitespace-normal leading-[20.48px] mb-1 font-['Avenir'];
+}
+.cardImg {
+  @apply mb-2 sm:mb-3 h-auto;
+}
+.cardInfo {
+  @apply mt-1 flex flex-col sm:flex-row sm:justify-between sm:items-center;
+}
+p.price {
+  @apply font-medium mb-2;
+}
+p.colors {
+  @apply flex flex-row items-center sm:justify-center;
+}
+p.colors span {
+  @apply w-3 h-3 inline-flex rounded-full ml-2 first-of-type:ml-0;
+}
+span.selected {
+  @apply border-2 border-black shadow-inner p-1;
+}
+span.colorsBlue {
+  @apply bg-[#99C4CC];
+}
+span.colorsOrange {
+  @apply bg-[#CC9999];
+}
+span.colorsPurple {
+  @apply bg-[#CB99CC];
+}
+span.colorsYellow {
+  @apply bg-[#A6CC99];
+}
